@@ -34,7 +34,7 @@ module CPU(
     reg [4:0] PC;
     wire [4:0] addr_wire;
     wire [4:0] Address;
-    reg [7:0] Accumulator;
+    wire [7:0] Accumulator;
     wire [7:0] Data_out;
     wire En_mem_wire;
     wire En_acc_wire;
@@ -91,7 +91,7 @@ module CPU(
        .acc_out(Accumulator)
        );
    
-    Data_Memory DM(
+    Data_Memory dm(
        .clock(clock),
        .reset(reset),
        .Data_in(ALU_result),
@@ -103,7 +103,7 @@ module CPU(
     ALU alu(
         .inA(Accumulator),
        .inB(Data_out),
-       .alu_OP(ALU_OP),
+       .alu_op(ALU_OP),
        .alu_out(ALU_result),
        .SKZ_cmp(SKZ_cmp)
        );
