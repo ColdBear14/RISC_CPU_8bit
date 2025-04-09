@@ -1,4 +1,4 @@
-module Program_counter_tb(
+module Program_Counter_tb(
 
     );
         // Inputs
@@ -15,7 +15,7 @@ module Program_counter_tb(
     wire [4:0] Address;
 
     // Instantiate the Unit Under Test (UUT)
-    Program_counter uut (
+    Program_Counter uut (
         .clock(clock), 
         .reset(reset), 
         .addr(addr), 
