@@ -9,7 +9,7 @@ module ALU(
     reg SKZ_source;
     wire [7:0] adder_result;
     
-    Adder_8bit ad8(inA, inB, adder_result);
+    Adder ad8(inA, inB, adder_result);
     
     always @(*)
     begin
@@ -41,5 +41,4 @@ module ALU(
 
     assign alu_out = alu_result;
     assign SKZ_cmp = SKZ_source;
-    
 endmodule

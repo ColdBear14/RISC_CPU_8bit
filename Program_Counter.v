@@ -1,4 +1,4 @@
-module Program_counter(
+module Program_Counter(
     input clock,
     input reset,
     input [4:0] addr,
@@ -6,11 +6,12 @@ module Program_counter(
     input   SKZ_cmp,
     input   Load_in,
     input   En_cpu_in,
-    output reg [7:0] Program_counter
+    output [4:0] Program_counter,
+    output reg [4:0] Address
     );
     
     wire [7:0] pc_jmp;
-    wire [4:0] PC;
+    reg [4:0] PC;
 
     assign pc_jmp = (Opcode == 3'b111) ? addr : 
                     (Opcode == 3'b001 && SKZ_cmp)? (PC + 5'd2) : 
@@ -21,9 +22,12 @@ module Program_counter(
     
 
     always @(posedge clock, posedge reset) begin
-        if(reset) Program_counter <= 8'd0;
+        if(reset) begin
+            PC <= 5'd0;
+            Address <= 5'd0; 
+        end
         else if(En_cpu_in) begin 
-            Program_counter <= Program_counter;
+            PC <= Program_counter;
             Address <= addr;
         end
     end

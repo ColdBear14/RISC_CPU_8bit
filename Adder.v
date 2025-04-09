@@ -5,7 +5,7 @@ module Adder_8bit(
     output [7:0] total
     );
     wire [7:0] carry;
-    reg carry_out;
+    wire carry_out;
     
     // Full adder logic for each bit
     assign {carry[0], total[0]} = inA[0] + inB[0];
