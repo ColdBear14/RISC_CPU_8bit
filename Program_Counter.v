@@ -10,7 +10,7 @@ module Program_Counter(
     output reg [4:0] Address
 );
 
-    reg [4:0] pc_next; // Temporary register for the next PC value
+    reg [4:0] pc_next;
 
     always @(*) begin
         // Calculate the next PC value based on the Opcode and conditions
