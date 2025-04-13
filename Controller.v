@@ -6,9 +6,9 @@ module Controller(
     output En_acc,
     output En_mem,
     output En_cpu,
-    output reg En_run,
     output reg [2:0] ALU_OP
     );
+    reg En_run;
     reg En_write_reg;
     reg En_write_mem;
     wire write_reg_next;

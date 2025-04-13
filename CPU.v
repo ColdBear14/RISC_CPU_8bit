@@ -79,7 +79,6 @@ module CPU(
         .En_acc(En_acc_wire),
         .En_mem(En_mem_wire),
         .En_cpu(En_cpu_wire),
-        .En_run(En_run_wire),
         .ALU_OP(ALU_OP)
         );
     
