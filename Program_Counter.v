@@ -49,8 +49,6 @@ module Program_Counter(
         if (reset) begin
             Program_counter <= 5'd0; // Reset PC to 0
             Address <= 5'd0;         // Reset Address to 0
-        end else if (Load_in) begin
-            Program_counter <= 5'd0; // Reset PC during load
         end else if (En_cpu_in) begin
             Program_counter <= pc_next; // Update PC with the calculated value
             Address <= addr;            // Update Address

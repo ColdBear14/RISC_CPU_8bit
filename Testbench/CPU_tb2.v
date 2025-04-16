@@ -49,13 +49,13 @@ module CPU_tb_2(
     initial begin
         clock = 0;
         reset = 1;
-        Load = 0;
+        Load = 1;
         data_in = 8'b0;
         
         // Reset the CPU
         #10 reset = 0;
         
-        Load = 1;
+        Load = 0;
         
         // Load instructions into instruction memory
         #10 data_in = 8'b10111011; // @00: LDA DATA_2
