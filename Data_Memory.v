@@ -1,3 +1,25 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date:
+// Design Name: 
+// Module Name: Data_Memory
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
 module Data_Memory(
     input clock,
     input reset,
@@ -7,13 +29,13 @@ module Data_Memory(
     output [7:0] Data_out
 );
     reg [7:0] memory [31:0]; // Memory array with 32 elements, each 8 bits wide
+    integer i;
 
     // Assign the output to the memory at the given address
     assign Data_out = memory[Address];
 
     // Memory update logic
     always @(posedge clock or posedge reset) begin
-        integer i;
         if (reset) begin
             // Reset all memory elements
             for (i = 0; i < 32; i = i + 1) begin

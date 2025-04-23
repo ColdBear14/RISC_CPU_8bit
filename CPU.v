@@ -33,8 +33,8 @@ module CPU(
 
     reg [4:0] PC;
     wire [4:0] addr_wire;
-    reg [4:0] Address;
-    reg [7:0] Accumulator;
+    wire [4:0] Address;
+    wire [7:0] Accumulator;
     wire [7:0] Data_out;
     wire En_mem_wire;
     wire En_acc_wire;
@@ -46,7 +46,7 @@ module CPU(
     wire [2:0] ALU_OP;
     wire [7:0] ALU_result;
 
-    assign Instruction = {Opcode, addr};
+    assign Instruction = {Opcode_wire, addr_wire};
     assign Acc = Accumulator;
     assign Mem = Data_out;
 
@@ -59,7 +59,7 @@ module CPU(
         .Address_out(addr_wire)
         );
    
-    Program_counter pc(
+    Program_Counter pc(
         .clock(clock),
         .reset(reset),
         .addr(addr_wire),
@@ -67,7 +67,8 @@ module CPU(
         .SKZ_cmp(SKZ_cmp),
         .Load_in(Load),
         .En_cpu_in(En_cpu_wire),
-        .Program_counter(Program_counter)
+        .Program_counter(Program_counter),
+        .Address(Address)
        );
    
     Controller c(
@@ -78,11 +79,10 @@ module CPU(
         .En_acc(En_acc_wire),
         .En_mem(En_mem_wire),
         .En_cpu(En_cpu_wire),
-        .En_run(En_run_wire),
         .ALU_OP(ALU_OP)
         );
     
-    Accumalator acc(
+    Accumulator acc(
        .clock(clock),
        .reset(reset),
        .en_acc_in(En_acc_wire),
@@ -90,7 +90,7 @@ module CPU(
        .acc_out(Accumulator)
        );
    
-    Data_Memory DM(
+    Data_Memory dm(
        .clock(clock),
        .reset(reset),
        .Data_in(ALU_result),
@@ -102,7 +102,7 @@ module CPU(
     ALU alu(
         .inA(Accumulator),
        .inB(Data_out),
-       .alu_OP(ALU_OP),
+       .alu_op(ALU_OP),
        .alu_out(ALU_result),
        .SKZ_cmp(SKZ_cmp)
        );

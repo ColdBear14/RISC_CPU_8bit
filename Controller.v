@@ -1,3 +1,23 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date:
+// Design Name: 
+// Module Name:
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
 module Controller(
     input clock,
     input reset,
@@ -6,9 +26,9 @@ module Controller(
     output En_acc,
     output En_mem,
     output En_cpu,
-    output reg En_run
     output reg [2:0] ALU_OP
     );
+    reg En_run;
     reg En_write_reg;
     reg En_write_mem;
     wire write_reg_next;
